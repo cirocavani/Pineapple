@@ -1,0 +1,11 @@
+{
+    "display_name": "TensorFlow",
+    "language": "python",
+    "argv": [
+        "{{CONDA_INSTDIR}}/envs/tensorflow/bin/python",
+        "-c",
+        "from ipykernel.kernelapp import main; main()",
+        "-f",
+        "{connection_file}"
+    ]
+}

@@ -1,0 +1,5 @@
+/.cache/
+/software/
+**/.ipynb_checkpoints/
+Project.toml
+Manifest.toml

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eu
+
+cd $(dirname "$0")/..
+source conf/env.sh
+
+export SHELL=/bin/bash
+
+$CONDA_INSTDIR/envs/jupyter/bin/jupyter lab --notebook-dir=workspace --no-browser $@
