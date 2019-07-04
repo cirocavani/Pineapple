@@ -50,6 +50,7 @@ $CONDA_INSTDIR/bin/conda clean -y --all
 
 rm -rf $JULIA_INSTDIR
 rm -rf $JULIA_DEPOT_PATH
+rm -f Project.toml Manifest.toml
 mkdir -p $JULIA_INSTDIR
 
 tar zxf .cache/$JULIA_PKG -C $JULIA_INSTDIR --strip-components=1
