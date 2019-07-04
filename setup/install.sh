@@ -35,7 +35,15 @@ $CONDA_INSTDIR/bin/conda env create -n jupyter -f setup/environment-jupyter.yaml
 
 # TensorFlow
 
-$CONDA_INSTDIR/bin/conda env create -n tensorflow -f setup/environment-tensorflow-${HW_PLATFORM}.yaml
+TENSORFLOW_PKG="tensorflow"
+if [ $HW_PLATFORM == "gpu" ]; then
+    TENSORFLOW_PKG="tensorflow-gpu"
+fi
+
+sed -e "s#{{TENSORFLOW_PKG}}#$TENSORFLOW_PKG#g" setup/environment-tensorflow.yaml \
+    > environment-tensorflow.yaml
+$CONDA_INSTDIR/bin/conda env create -n tensorflow -f environment-tensorflow.yaml
+rm environment-tensorflow.yaml
 
 mkdir -p $JUPYTER_DATA_DIR/kernels/tensorflow
 sed -e "s#{{CONDA_INSTDIR}}#$CONDA_INSTDIR#g" setup/jupyter-tensorflow.json \

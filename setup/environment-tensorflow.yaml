@@ -7,6 +7,6 @@ dependencies:
     - psutil # tensorflow-datasets
     - pip
     - pip:
-        - tensorflow==2.0.0b1
+        - {{TENSORFLOW_PKG}}==2.0.0b1
         - tensorflow-probability==0.7.0
         - tensorflow-datasets==1.0.2
