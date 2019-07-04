@@ -45,10 +45,6 @@ sed -e "s#{{TENSORFLOW_PKG}}#$TENSORFLOW_PKG#g" setup/environment-tensorflow.yam
 $CONDA_INSTDIR/bin/conda env create -n tensorflow -f environment-tensorflow.yaml
 rm environment-tensorflow.yaml
 
-mkdir -p $JUPYTER_DATA_DIR/kernels/tensorflow
-sed -e "s#{{CONDA_INSTDIR}}#$CONDA_INSTDIR#g" setup/jupyter-tensorflow.json \
-    > $JUPYTER_DATA_DIR/kernels/tensorflow/kernel.json
-
 # Conda clean ...
 
 $CONDA_INSTDIR/bin/conda clean -y --all
