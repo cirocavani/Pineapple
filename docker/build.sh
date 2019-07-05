@@ -20,7 +20,7 @@ case $HW_PLATFORM in
         exit 1
 esac
 
-IMAGE_TAG="pineapple-${HW_PLATFORM}:master"
+IMAGE_TAG="pineapple-${HW_PLATFORM}:latest"
 CONTAINER_NAME="pineapple-${HW_PLATFORM}"
 
 if [ ! -z "$(docker ps -q -a -f name=$CONTAINER_NAME$)" ]; then
