@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eu
+
+cd $(dirname "$0")/..
+source conf/env.sh
+
+$JULIA_INSTDIR/bin/julia $@

@@ -3,7 +3,7 @@ set -xeu
 
 cd $(dirname "$0")/..
 
-HW_PLATFORM=${1:-cpu}
+HW_PLATFORM=${1:-gpu}
 
 case $HW_PLATFORM in
     cpu)

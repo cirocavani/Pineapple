@@ -59,7 +59,7 @@ mkdir -p $JULIA_INSTDIR
 
 tar zxf .cache/$JULIA_PKG -C $JULIA_INSTDIR --strip-components=1
 
-$JULIA_INSTDIR/bin/julia setup/setup.jl
+$JULIA_INSTDIR/bin/julia setup/setup.jl $HW_PLATFORM
 
 
 echo "Install done!"

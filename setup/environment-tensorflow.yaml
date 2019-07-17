@@ -2,12 +2,13 @@ dependencies:
     - python=3.7
     - ipykernel
     - numpy
+    - pandas
     - matplotlib
     - seaborn
-    - psutil # tensorflow-datasets
+    - psutil     # tensorflow-datasets
     - ipywidgets # tensorflow-datasets
-    - pydot # tf.keras.utils.plot_model
-    - graphviz # tf.keras.utils.plot_model
+    - pydot      # tf.keras.utils.plot_model
+    - graphviz   # tf.keras.utils.plot_model
     - pip
     - pip:
         - {{TENSORFLOW_PKG}}==2.0.0b1
