@@ -1,6 +1,6 @@
-# NVidia Docker
+# Docker GPU
 
-Container with GPU support requires NVidia GPU (CUDA compatible) and NVidia Docker runtime.
+Container with GPU support requires NVidia GPU (CUDA compatible) and NVidia Container Runtime.
 
 
 ## Setup
@@ -16,7 +16,7 @@ https://hub.docker.com/r/nvidia/cuda/
 Requirements:
 
 * NVidia Driver at least 410
-* NVidia Docker V2 runtime
+* NVidia Container Runtime
 
 ...
 
@@ -28,10 +28,24 @@ https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
 
 ...
 
-Install Docker Engine and NVidia Docker runtime.
+Install Docker Engine (>=19.03) and NVidia Container Runtime.
 
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
-https://github.com/NVIDIA/nvidia-docker
+https://github.com/NVIDIA/nvidia-container-runtime
+
+Edit `/etc/docker/daemon.json`:
+
+```json
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+    "default-runtime": "nvidia"
+}
+```
 
 ...

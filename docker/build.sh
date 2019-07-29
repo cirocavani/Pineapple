@@ -8,12 +8,12 @@ HW_PLATFORM=${1:-gpu}
 case $HW_PLATFORM in
     cpu)
         IMAGE_BASE="ubuntu:16.04"
-        DOCKER_RUNTIME=""
+        DOCKER_ARGS=""
         ;;
     gpu)
         # devel -> CUDAnative.jl
         IMAGE_BASE="nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04"
-        DOCKER_RUNTIME="--runtime=nvidia"
+        DOCKER_ARGS="--gpus all"
         ;;
     *)
         echo "Unsupported platform: $HW_PLATFORM"
@@ -40,7 +40,7 @@ docker build \
 
 docker create \
     --name $CONTAINER_NAME \
-    $DOCKER_RUNTIME \
+    $DOCKER_ARGS \
     -t \
     -p 8888:8888 \
     -v $(pwd)/workspace:/home/user/workspace \
