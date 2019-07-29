@@ -22,6 +22,7 @@ deps = [
     "Distributions",
     "Images",
     "ImageMagick",
+    "BSON",
 ]
 
 if hw_platform == "gpu"
