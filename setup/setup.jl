@@ -18,20 +18,29 @@ Pkg.instantiate()
 deps = [
     "IJulia",
     "Flux",
-    "Statistics",
     "Distributions",
     "Images",
     "ImageMagick",
     "BSON",
+    "Plots",
+    "PyPlot",
 ]
 
 if hw_platform == "gpu"
     push!(deps, "CuArrays")
 end
 
+ENV["PYTHON"] = joinpath(ENV["CONDA_INSTDIR"], "envs", "julia", "bin", "python")
+
 Pkg.add(deps)
-#Pkg.build("IJulia")
 
 Pkg.API.precompile()
+
+for m in deps
+    try
+        eval(Meta.parse(string("import ", m)))
+    catch
+    end
+end
 
 println("\nSetup done.")

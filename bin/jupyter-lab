@@ -4,6 +4,8 @@ set -eu
 cd $(dirname "$0")/..
 source conf/env.sh
 
+. activate jupyter
+
 export SHELL=/bin/bash
 
-$CONDA_INSTDIR/envs/jupyter/bin/jupyter lab --notebook-dir=workspace --no-browser $@
+jupyter lab --notebook-dir=workspace --no-browser $@

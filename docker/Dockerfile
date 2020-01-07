@@ -27,13 +27,13 @@ RUN useradd -m -G sudo user && \
 USER user
 WORKDIR /home/user
 
-COPY --chown=user .cache .cache
+COPY --chown=user downloads downloads
 COPY --chown=user setup setup
 COPY --chown=user conf conf
 COPY --chown=user bin bin
 COPY --chown=user setup/jupyter_notebook_config.py /home/user/.jupyter/
 RUN ~/setup/install.sh $hw_platform && \
-    rm -rf .cache setup
+    rm -rf downloads setup
 
 EXPOSE 8888
 

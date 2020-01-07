@@ -24,7 +24,7 @@ rm -rf $CONDA_INSTDIR
 rm -rf $JUPYTER_DATA_DIR
 mkdir -p $JUPYTER_DATA_DIR
 
-bash .cache/$CONDA_PKG -b -p $CONDA_INSTDIR
+bash $DOWNLOAD_DIR/$CONDA_PKG -b -p $CONDA_INSTDIR
 
 $CONDA_INSTDIR/bin/conda update -y -n base -c defaults conda
 $CONDA_INSTDIR/bin/conda update -y -n base --all
@@ -32,6 +32,10 @@ $CONDA_INSTDIR/bin/conda update -y -n base --all
 # Jupyter
 
 $CONDA_INSTDIR/bin/conda env create -n jupyter -f setup/environment-jupyter.yaml
+
+# Julia PyPlot (Matplotlib)
+
+$CONDA_INSTDIR/bin/conda env create -n julia -f setup/environment-julia.yaml
 
 # TensorFlow
 
@@ -57,7 +61,7 @@ rm -rf $JULIA_DEPOT_PATH
 rm -f Project.toml Manifest.toml
 mkdir -p $JULIA_INSTDIR
 
-tar zxf .cache/$JULIA_PKG -C $JULIA_INSTDIR --strip-components=1
+tar zxf $DOWNLOAD_DIR/$JULIA_PKG -C $JULIA_INSTDIR --strip-components=1
 
 $JULIA_INSTDIR/bin/julia setup/setup.jl $HW_PLATFORM
 
