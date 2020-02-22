@@ -7,7 +7,7 @@ Container with GPU support requires NVidia GPU (CUDA compatible) and NVidia Cont
 
 Based on image:
 
-`nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04`.
+`nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04`.
 
 https://hub.docker.com/r/nvidia/cuda/
 
@@ -24,7 +24,7 @@ Install NVidia Driver.
 
 https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
 
-(at least 410 is required for CUDA 10.0)
+(at least 410 is required for CUDA 10.1)
 
 ...
 

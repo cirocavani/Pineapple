@@ -15,4 +15,4 @@ case $HW_PLATFORM in
         exit 1
 esac
 
-docker stop pineapple-${HW_PLATFORM}
+docker stop julia-abc-${HW_PLATFORM}

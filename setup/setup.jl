@@ -17,28 +17,36 @@ Pkg.instantiate()
 
 deps = [
     "IJulia",
-    "Flux",
+    "DataFrames",
+    "PrettyTables",
+    "DataStructures",
     "Distributions",
     "Images",
     "ImageMagick",
     "BSON",
+    "CSV",
     "Plots",
     "PyPlot",
+    "Flux",
+    "Zygote",
+    "Gym",
 ]
 
 if hw_platform == "gpu"
-    push!(deps, "CuArrays")
+    append!(deps, ["CUDAdrv", "CUDAnative", "CuArrays"])
 end
 
-ENV["PYTHON"] = joinpath(ENV["CONDA_INSTDIR"], "envs", "julia", "bin", "python")
+ENV["PYTHON"] = joinpath(ENV["CONDA_INSTDIR"], "envs", "python", "bin", "python")
 
 Pkg.add(deps)
 
-Pkg.API.precompile()
-
-for m in deps
+# Precompiling
+Pkg.update()
+Pkg.gc()
+JULIA_BIN = joinpath(ENV["JULIA_INSTDIR"], "bin", "julia")
+for pkg_name in keys(Pkg.installed())
     try
-        eval(Meta.parse(string("import ", m)))
+        run(`$JULIA_BIN -e "println(\"$pkg_name\"); import $pkg_name"`)
     catch
     end
 end

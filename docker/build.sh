@@ -7,12 +7,12 @@ HW_PLATFORM=${1:-gpu}
 
 case $HW_PLATFORM in
     cpu)
-        IMAGE_BASE="ubuntu:16.04"
+        IMAGE_BASE="ubuntu:18.04"
         DOCKER_ARGS=""
         ;;
     gpu)
         # devel -> CUDAnative.jl
-        IMAGE_BASE="nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04"
+        IMAGE_BASE="nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04"
         DOCKER_ARGS="--gpus all"
         ;;
     *)
@@ -20,8 +20,8 @@ case $HW_PLATFORM in
         exit 1
 esac
 
-IMAGE_TAG="pineapple-${HW_PLATFORM}:latest"
-CONTAINER_NAME="pineapple-${HW_PLATFORM}"
+IMAGE_TAG="julia-abc-${HW_PLATFORM}:latest"
+CONTAINER_NAME="julia-abc-${HW_PLATFORM}"
 
 if [ ! -z "$(docker ps -q -a -f name=$CONTAINER_NAME$)" ]; then
     docker rm -f $CONTAINER_NAME
@@ -43,5 +43,5 @@ docker create \
     $DOCKER_ARGS \
     -t \
     -p 8888:8888 \
-    -v $(pwd)/workspace:/home/user/workspace \
+    -v $(pwd):/home/user/julia-abc \
     $IMAGE_TAG

@@ -4,4 +4,4 @@ set -eu
 cd $(dirname "$0")/..
 source conf/env.sh
 
-$JULIA_INSTDIR/bin/julia $@
+$JULIA_INSTDIR/bin/julia "$@"

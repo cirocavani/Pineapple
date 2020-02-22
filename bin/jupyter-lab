@@ -8,4 +8,4 @@ source conf/env.sh
 
 export SHELL=/bin/bash
 
-jupyter lab --notebook-dir=workspace --no-browser $@
+jupyter lab --no-browser --LabApp.token='' "$@"

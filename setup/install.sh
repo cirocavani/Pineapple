@@ -18,52 +18,14 @@ esac
 
 echo "Installing..."
 
-. setup/downloads.sh
-
-rm -rf $CONDA_INSTDIR
-rm -rf $JUPYTER_DATA_DIR
-mkdir -p $JUPYTER_DATA_DIR
-
-bash $DOWNLOAD_DIR/$CONDA_PKG -b -p $CONDA_INSTDIR
-
-$CONDA_INSTDIR/bin/conda update -y -n base -c defaults conda
-$CONDA_INSTDIR/bin/conda update -y -n base --all
-
-# Jupyter
-
-$CONDA_INSTDIR/bin/conda env create -n jupyter -f setup/environment-jupyter.yaml
-
-# Julia PyPlot (Matplotlib)
-
-$CONDA_INSTDIR/bin/conda env create -n julia -f setup/environment-julia.yaml
-
-# TensorFlow
-
-TENSORFLOW_PKG="tensorflow"
-if [ $HW_PLATFORM == "gpu" ]; then
-    TENSORFLOW_PKG="tensorflow-gpu"
-fi
-
-sed -e "s#{{TENSORFLOW_PKG}}#$TENSORFLOW_PKG#g" setup/environment-tensorflow.yaml \
-    > environment-tensorflow.yaml
-$CONDA_INSTDIR/bin/conda env create -n tensorflow -f environment-tensorflow.yaml
-rm environment-tensorflow.yaml
+setup/downloads.sh
+setup/install-conda.sh
+setup/install-jupyter.sh
+setup/install-python.sh
+setup/install-julia.sh $HW_PLATFORM
 
 # Conda clean ...
 
-$CONDA_INSTDIR/bin/conda clean -y --all
-
-
-# Julia
-
-rm -rf $JULIA_INSTDIR
-rm -rf $JULIA_DEPOT_PATH
-rm -f Project.toml Manifest.toml
-mkdir -p $JULIA_INSTDIR
-
-tar zxf $DOWNLOAD_DIR/$JULIA_PKG -C $JULIA_INSTDIR --strip-components=1
-
-$JULIA_INSTDIR/bin/julia setup/setup.jl $HW_PLATFORM
-
+$CONDA_INSTDIR/bin/conda clean -q -y --all
 
 echo "Install done!"

@@ -1,6 +1,6 @@
-# Pineapple
+# Julia Above and Beyond Consortium
 
-Deep Learning with Julia.
+Everything Julia.
 
 ## Setup
 
@@ -22,7 +22,7 @@ Local install for CPU:
 setup/install.sh cpu
 ```
 
-Local install for GPU (requires CUDA 10.0 and cuDNN 7 installed):
+Local install for GPU (requires CUDA 10.1 and cuDNN 7 installed):
 
 ```sh
 setup/install.sh gpu
