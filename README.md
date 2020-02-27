@@ -7,7 +7,7 @@ Everything Julia.
 Two types of installation:
 
 * `Local`: assumes an Linux 64 bits, install on a project folder (isolated from the rest of the system).
-* `Docker`: uses an Ubuntu 16.04 LTS image to install the project.
+* `Docker`: uses an Ubuntu 18.04 LTS image to install the project.
 
 Two types of hardware supported:
 
