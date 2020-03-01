@@ -67,3 +67,13 @@ docker/shutdown.sh gpu
 ```
 
 In both cases, open `http://localhost:8888/` in the web browser to access Jupyter Lab.
+
+
+## Notebooks
+
+**Deep Learning**
+
+[ [Notebook](Julia%20-%20Deep%20Learning.ipynb) ] 
+[ [NBView](https://nbviewer.jupyter.org/github/cirocavani/julia-abc/blob/master/workspace/Julia%20-%20Deep%20Learning.ipynb) ]
+
+Deep Learning examples using Flux.jl (MLP, CNN, Autoencoder).
