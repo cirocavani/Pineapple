@@ -16,24 +16,28 @@ using Pkg
 Pkg.instantiate()
 
 deps = [
-    "IJulia",
-    "DataFrames",
-    "PrettyTables",
-    "DataStructures",
-    "Distributions",
-    "Images",
-    "ImageMagick",
-    "BSON",
-    "CSV",
-    "Plots",
-    "PyPlot",
-    "Flux",
-    "Zygote",
-    "Gym",
+    PackageSpec("IJulia"),
+    PackageSpec("DataFrames"),
+    PackageSpec("PrettyTables"),
+    PackageSpec("DataStructures"),
+    PackageSpec("Distributions"),
+    PackageSpec("Images"),
+    PackageSpec("ImageMagick"),
+    PackageSpec("BSON"),
+    PackageSpec("CSV"),
+    PackageSpec("Plots"),
+    PackageSpec("PyPlot"),
+    PackageSpec("Flux"),
+    PackageSpec("Zygote"),
+    PackageSpec(url="https://github.com/cirocavani/Gym.jl"),
 ]
 
 if hw_platform == "gpu"
-    append!(deps, ["CUDAdrv", "CUDAnative", "CuArrays"])
+    append!(deps, [
+        PackageSpec("CUDAdrv"),
+        PackageSpec("CUDAnative"),
+        PackageSpec("CuArrays"),
+    ])
 end
 
 ENV["PYTHON"] = joinpath(ENV["CONDA_INSTDIR"], "envs", "python", "bin", "python")
