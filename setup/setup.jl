@@ -52,7 +52,7 @@ for (_, pkg) in Pkg.dependencies()
     pkg.is_direct_dep && pkg.version !== nothing || continue
     try
         pkg_name = pkg.name
-        run(`$JULIA_BIN -e "println(\"$pkg_name\"); import $pkg_name"`)
+        run(`$JULIA_BIN -e "println(\"$pkg_name\"); @time import $pkg_name"`)
     catch
     end
 end

@@ -11,9 +11,11 @@ import Pkg
 Pkg.update()
 Pkg.gc()
 JULIA_BIN = joinpath(ENV["JULIA_INSTDIR"], "bin", "julia")
-for pkg_name in keys(Pkg.installed())
+for (_, pkg) in Pkg.dependencies()
+    pkg.is_direct_dep && pkg.version !== nothing || continue
     try
-        run(`$JULIA_BIN -e "println(\"$pkg_name\"); import $pkg_name"`)
+        pkg_name = pkg.name
+        run(`$JULIA_BIN -e "println(\"$pkg_name\"); @time import $pkg_name"`)
     catch
     end
 end
