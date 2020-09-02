@@ -34,9 +34,7 @@ deps = [
 
 if hw_platform == "gpu"
     append!(deps, [
-        PackageSpec("CUDAdrv"),
-        PackageSpec("CUDAnative"),
-        PackageSpec("CuArrays"),
+        PackageSpec("CUDA"),
     ])
 end
 
